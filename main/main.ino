@@ -19,22 +19,7 @@ const char* password = "ELG67HAH";
 IPAddress server(192,168,1,107);      // Set the rosserial socket ROSCORE SERVER IP address
 const uint16_t serverPort = 11411;    // Set the rosserial socket server port
 
-void setupWiFi() {                    // connect to ROS server as as a client
-  if(DEBUG){
-    Serial.print("Connecting to ");
-    Serial.println(ssid);
-    WiFi.begin(ssid, password);
-  }
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-  }
-  if(DEBUG){
-    Serial.println("");
-    Serial.println("WiFi connected");
-    Serial.println("IP address: ");
-    Serial.println(WiFi.localIP());
-  }
-}
+void setupWiFi();                  // connect to ROS server as as a client
 
 void setup() {
   if(DEBUG) Serial.begin(115200);
@@ -57,4 +42,21 @@ void loop() {
   // Loop aprox. every  
   delay(200);  // milliseconds
 
+}
+
+void setupWiFi() {                    // connect to ROS server as as a client
+  if(DEBUG){
+    Serial.print("Connecting to ");
+    Serial.println(ssid);
+    WiFi.begin(ssid, password);
+  }
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+  }
+  if(DEBUG){
+    Serial.println("");
+    Serial.println("WiFi connected");
+    Serial.println("IP address: ");
+    Serial.println(WiFi.localIP());
+  }
 }
