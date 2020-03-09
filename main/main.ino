@@ -12,8 +12,8 @@ sensor_msgs::Imu imuData;
 
 ros::Publisher pub_imuData("/esp32/imuData", &imuData);
 char base_link[] = "/base_link";
-uint16_t freqPub = 20;  //Publishing frequency
-uint16_t waitTime = (uint16_t) 1000.0 / freqPub;
+uint16_t freqPub = 25;  //Publishing frequency
+uint16_t waitTime = 1000.0 / freqPub;
 unsigned long t0, t1;
 
 //WIFI Setup
