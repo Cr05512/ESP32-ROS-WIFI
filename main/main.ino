@@ -17,11 +17,11 @@ uint16_t waitTime = 1000.0 / freqPub;
 unsigned long t0, t1;
 
 //WIFI Setup
-//const char* ssid = "WebCube4-4NN5";
-const char* ssid = "AndroidAPC";
-//const char* password = "ELG67HAH";
-const char* password = "robotica18";
-IPAddress server(192,168,43,249);      // Set the rosserial socket ROSCORE SERVER IP address
+
+const char* ssid = "yourWIFINetwork";
+const char* password = "yourWIFIPassword";
+
+IPAddress server(192,168,*,***);      // Set the rosserial socket ROSCORE SERVER IP address
 const uint16_t serverPort = 11411;    // Set the rosserial socket server port
 void setupWiFi();                  // connect to ROS server as as a client
 #define DEBUG 1
