@@ -4,8 +4,8 @@ This app is meant to get readings from the MPU6050 sensor and to stream them ove
 
 Wiring:
 
-MPU6050  <------>  ESP32 Wroom  
-VCC      <------>  3.3V  
+| MPU6050 | ESP32 Wroom |  
+| VCC | 3.3V |
 GND      <------>  GND  
 SDA      <------>  G22  
 SCL      <------>  G21  
