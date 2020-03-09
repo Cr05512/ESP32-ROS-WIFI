@@ -23,5 +23,5 @@ The app itself is just a benchmark, it may contain errors.
 
 **USAGE**
 1. Open a terminal and launch ``roscore``  
-2. Open another terminal window and launch ```rosrun rosserial_python serial_node.py tcp``  
+2. Open another terminal window and launch ``rosrun rosserial_python serial_node.py tcp``  
 3. You can now see the logged data through ``rostopic echo /esp32/imuData``
