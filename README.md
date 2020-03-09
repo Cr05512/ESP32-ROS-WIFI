@@ -9,7 +9,7 @@ VCC      <------>  3.3V
 GND      <------>  GND  
 SDA      <------>  G22  
 SCL      <------>  G21  
-INT      <------>  G32  
+INT       <------>  G32  
 
 By setting the sampling frequency it is possible to regulate the rate of data publishing.
 The app itself is just a benchmark, it may contain errors.
