@@ -14,3 +14,5 @@ Wiring:
 
 By setting the sampling frequency it is possible to regulate the rate of data publishing.
 The app itself is just a benchmark, it may contain errors.
+
+** INSTALLATION INSTRUCTION **
