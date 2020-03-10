@@ -18,10 +18,10 @@ unsigned long t0, t1;
 
 //WIFI Setup
 
-const char* ssid = "yourWIFINetwork";
-const char* password = "yourWIFIPassword";
+const char* ssid = "AndroidAPC";
+const char* password = "robotica18";
 
-IPAddress server(192,168,*,***);      // Set the rosserial socket ROSCORE SERVER IP address
+IPAddress server(192,168,43,249);      // Set the rosserial socket ROSCORE SERVER IP address
 const uint16_t serverPort = 11411;    // Set the rosserial socket server port
 void setupWiFi();                  // connect to ROS server as as a client
 #define DEBUG 1
@@ -80,20 +80,21 @@ void setup() {
 
   Serial.println(F("Initializing DMP..."));
   devStatus = mpu.dmpInitialize();
+  mpu.setFullScaleGyroRange(0);
 
-  mpu.setXGyroOffset(51);
-  mpu.setYGyroOffset(8);
-  mpu.setZGyroOffset(21);
-  mpu.setXAccelOffset(1150);
-  mpu.setYAccelOffset(-50);
-  mpu.setZAccelOffset(1060);
+  mpu.setXGyroOffset(-1591);
+  mpu.setYGyroOffset(-60);
+  mpu.setZGyroOffset(5);
+  mpu.setXAccelOffset(-3866);
+  mpu.setYAccelOffset(-1864);
+  mpu.setZAccelOffset(1662);
  
   if (devStatus == 0) {
     // Calibration Time: generate offsets and calibrate our MPU6050
-    mpu.CalibrateAccel(6);
-    mpu.CalibrateGyro(6);
-    Serial.println();
-    mpu.PrintActiveOffsets();
+    //mpu.CalibrateAccel(6);
+    //mpu.CalibrateGyro(6);
+    //Serial.println();
+    //mpu.PrintActiveOffsets();
     // turn on the DMP, now that it's ready
     Serial.println(F("Enabling DMP..."));
     mpu.setDMPEnabled(true);
@@ -124,6 +125,10 @@ void setup() {
   nh.advertise(pub_imuData);
   t1 = millis();
   t0 = t1;
+  Serial.print("Gyro range: ");
+  Serial.println(mpu.getFullScaleGyroRange());
+  Serial.print("Accel range: ");
+  Serial.println(mpu.getFullScaleAccelRange());
 }
 
 void loop() {
@@ -139,15 +144,16 @@ void loop() {
       imuData.orientation.y = q.y;
       imuData.orientation.z = q.z;
 
-      mpu.getRotation(&gx, &gy, &gz);
-      imuData.angular_velocity.x = degToRad(gx / 131.0);
+      mpu.getMotion6(&accel.x, &accel.y, &accel.z, &gx, &gy, &gz);
+      //mpu.getRotation(&gx, &gy, &gz);
+      imuData.angular_velocity.x = degToRad(gx / 131.0);     //The gyro full scale range is set to 0, that is we need to divide by the LSB sensitivity of 131.0
       imuData.angular_velocity.y = degToRad(gy / 131.0);
       imuData.angular_velocity.z = degToRad(gz / 131.0);
 
-      mpu.dmpGetGravity(&gravity, &q);
-      imuData.linear_acceleration.x = gravity.x;
-      imuData.linear_acceleration.y = gravity.y;
-      imuData.linear_acceleration.z = gravity.z;
+      //mpu.dmpGetGravity(&gravity, &q);
+      imuData.linear_acceleration.x = accel.x / 16384.0;    // The accel range is set to 0 (2g); that means the dividing factor will be twice the LSB sensitivity, that is 2*8192 = 16384, if we want
+      imuData.linear_acceleration.y = accel.y / 16384.0;    // to map the accelerations between -1g and +1g
+      imuData.linear_acceleration.z = accel.z / 16384.0;
   
     }
   }
