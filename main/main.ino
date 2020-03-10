@@ -18,10 +18,10 @@ unsigned long t0, t1;
 
 //WIFI Setup
 
-const char* ssid = "AndroidAPC";
-const char* password = "robotica18";
+const char* ssid = "yourSSID";   //Fill in your WIFI ssid and password
+const char* password = "yourPW";
 
-IPAddress server(192,168,43,249);      // Set the rosserial socket ROSCORE SERVER IP address
+IPAddress server(192,168,*,***);      // Set the rosserial socket ROSCORE SERVER IP address
 const uint16_t serverPort = 11411;    // Set the rosserial socket server port
 void setupWiFi();                  // connect to ROS server as as a client
 #define DEBUG 1
