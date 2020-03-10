@@ -141,7 +141,7 @@ void loop() {
 
       mpu.getRotation(&gx, &gy, &gz);
       imuData.angular_velocity.x = degToRad(gx / 131.0);
-      imuData.angular_velocity.y = degToRad(gx / 131.0);
+      imuData.angular_velocity.y = degToRad(gy / 131.0);
       imuData.angular_velocity.z = degToRad(gz / 131.0);
 
       mpu.dmpGetGravity(&gravity, &q);
