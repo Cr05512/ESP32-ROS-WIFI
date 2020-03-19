@@ -25,8 +25,8 @@ The app itself is just a benchmark, it may contain errors.
 **INSTALLATION INSTRUCTIONS**
 
 1. Clone this repo  
-2. Copy the folders ros_lib, mpu6050 and I2Cdev in Arduino/libraries  
-3. Open the main.ino file and flash it to the ESP32
+2. Copy the folders ros_lib, mpu6050, SparkFun_MPU-9250-DMP_Arduino_Library and I2Cdev in Arduino/libraries  
+3. Open the main***.ino file and flash it to the ESP32
 
 **USAGE**
 1. Open a terminal and launch ``roscore``  
