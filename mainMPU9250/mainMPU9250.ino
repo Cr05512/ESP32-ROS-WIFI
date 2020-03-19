@@ -11,7 +11,7 @@ sensor_msgs::Imu imuData;
 
 ros::Publisher pub_imuData("/esp32/imuData", &imuData);
 char base_link[] = "/base_link";
-uint16_t freqPub = 25;  //Publishing frequency
+uint16_t freqPub = 30;  //Publishing frequency
 uint16_t waitTime = 1000.0 / freqPub;
 unsigned long t0, t1;
 
@@ -73,13 +73,13 @@ void loop() {
         imuData.orientation.z = mpu.calcQuat(mpu.qz);
 
         mpu.update(UPDATE_ACCEL | UPDATE_GYRO);
-        imuData.angular_velocity.x = degToRad(mpu.calcGyro(mpu.gx) / mpu.getGyroSens());     //The gyro full scale range is set to 0, that is we need to divide by the LSB sensitivity of 131.0
-        imuData.angular_velocity.y = degToRad(mpu.calcGyro(mpu.gy) / mpu.getGyroSens());
-        imuData.angular_velocity.z = degToRad(mpu.calcGyro(mpu.gz) / mpu.getGyroSens());
+        imuData.angular_velocity.x = degToRad(mpu.calcGyro(mpu.gx)); 
+        imuData.angular_velocity.y = degToRad(mpu.calcGyro(mpu.gy));
+        imuData.angular_velocity.z = degToRad(mpu.calcGyro(mpu.gz));
 
-        imuData.linear_acceleration.x = mpu.calcAccel(mpu.ax) / mpu.getAccelSens();    // The accel range is set to 0 (2g); that means the dividing factor will be twice the LSB sensitivity, that is 2*8192 = 16384, if we want
-        imuData.linear_acceleration.y = mpu.calcAccel(mpu.ay) / mpu.getAccelSens();    // to map the accelerations between -1g and +1g
-        imuData.linear_acceleration.z = mpu.calcAccel(mpu.az) / mpu.getAccelSens();
+        imuData.linear_acceleration.x = mpu.calcAccel(mpu.ax);   
+        imuData.linear_acceleration.y = mpu.calcAccel(mpu.ay);    
+        imuData.linear_acceleration.z = mpu.calcAccel(mpu.az);
       }
  
     }

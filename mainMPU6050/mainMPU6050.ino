@@ -22,7 +22,7 @@ const char* ssid = "yourSSID";
 const char* password = "yourPass";
 
 
-IPAddress server(192,168,*,***);      // Set the rosserial socket ROSCORE SERVER IP address
+IPAddress server(192,168,,***);      // Set the rosserial socket ROSCORE SERVER IP address
 const uint16_t serverPort = 11411;    // Set the rosserial socket server port
 void setupWiFi();                  // connect to ROS server as as a client
 #define DEBUG 1
