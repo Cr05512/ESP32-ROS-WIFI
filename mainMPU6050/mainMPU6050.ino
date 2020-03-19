@@ -18,8 +18,13 @@ unsigned long t0, t1;
 
 //WIFI Setup
 
+<<<<<<< HEAD:mainMPU6050/mainMPU6050.ino
 const char* ssid = "yourSSID";
 const char* password = "yourPass";
+=======
+const char* ssid = "yourSSID";   //Fill in your WIFI ssid and password
+const char* password = "yourPW";
+>>>>>>> d40640a1032c8e387050c01c532a08fb26e7806e:main/main.ino
 
 IPAddress server(192,168,*,***);      // Set the rosserial socket ROSCORE SERVER IP address
 const uint16_t serverPort = 11411;    // Set the rosserial socket server port
