@@ -18,10 +18,10 @@ unsigned long t0, t1;
 
 //WIFI Setup
 
-const char* ssid = "AndroidAPC";
-const char* password = "robotica18";
+const char* ssid = "yourSSID";
+const char* password = "yourPass";
 
-IPAddress server(192,168,43,249);      // Set the rosserial socket ROSCORE SERVER IP address
+IPAddress server(192,168,*,***);      // Set the rosserial socket ROSCORE SERVER IP address
 const uint16_t serverPort = 11411;    // Set the rosserial socket server port
 void setupWiFi();                  // connect to ROS server as as a client
 #define DEBUG 1
@@ -82,12 +82,12 @@ void setup() {
   devStatus = mpu.dmpInitialize();
   mpu.setFullScaleGyroRange(0);
 
-  mpu.setXGyroOffset(-1591);
+  mpu.setXGyroOffset(-1581);
   mpu.setYGyroOffset(-60);
-  mpu.setZGyroOffset(5);
-  mpu.setXAccelOffset(-3866);
-  mpu.setYAccelOffset(-1864);
-  mpu.setZAccelOffset(1662);
+  mpu.setZGyroOffset(6);
+  mpu.setXAccelOffset(-4016);
+  mpu.setYAccelOffset(-1910);
+  mpu.setZAccelOffset(1652);
  
   if (devStatus == 0) {
     // Calibration Time: generate offsets and calibrate our MPU6050
