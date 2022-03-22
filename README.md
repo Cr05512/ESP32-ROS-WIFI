@@ -8,16 +8,16 @@ Wiring:
 | ------- | ----------- |
 | VCC | 3.3V |
 | GND | GND |
-| SDA | G22 |
-| SCL | G21 |
+| SDA | G21 |
+| SCL | G22 |
 | INT | G32 |
 
 | MPU9250 | ESP32 Wroom |
 | ------- | ----------- |
 | VCC | 3.3V |
 | GND | GND |
-| SDA | G22 |
-| SCL | G21 |
+| SDA | G21 |
+| SCL | G22 |
 
 By setting the sampling frequency it is possible to regulate the rate of data publishing.
 The app itself is just a benchmark, it may contain errors.
